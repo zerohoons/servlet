@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>계산기</title>
+<style>
+fieldset {
+	width: 300px;
+}
+</style>
+<script type="text/javascript">
+function calcul(t){
+	var s1 = t.s1.value;
+	if(s1==""){
+		alert("수를 입력하세요.");
+		t.s1.focus();
+		return;
+	}
+	var s2 = t.s2.value;
+	if(s2==""){
+		alert("수를 입력하세요.");
+		t.s2.focus();
+		return;
+	}
+	
+	// 라디오 버튼 입력 검사
+	var x = document.getElementsByName("op");
+	var k = 0;
+	for (var i = 0 ; i<x.length; i++){
+		if(x[i].checked){
+			k = k+1;
+		}
+	}
+	if(k==0){
+		alert("연산자를 입력하세요.");
+		return;
+	
+	}
+	t.action="/01_servlet/Ex07";
+	t.submit();
+}
+</script>
+</head>
+<body>
+<form action="/01_servlet/Ex07" method="post">
+<fieldset>
+<legend>계산기</legend>
+<p> 수1 : <input type ="number" name = "s1" required> </p>
+<p> 수2 : <input type ="number" name = "s2" required> </p>
+<p> 연산자 : 
+<input type ="radio" name = "op" value = "+">  + 
+<input type ="radio" name = "op" value = "-">  -
+<input type ="radio" name = "op" value = "*">  * 
+<input type ="radio" name = "op" value = "/">  / 
+</p>
+<input type = "submit" value = "계산하기">
+</fieldset>
+</form>
+<hr>
+<form action= "" method="post">
+<fieldset>
+<legend>계산기JS</legend>
+<p> 수1 : <input type ="number" name = "s1" > </p>
+<p> 수2 : <input type ="number" name = "s2" > </p>
+<p> 연산자 : 
+<input type ="radio" name = "op" value = "+">  + 
+<input type ="radio" name = "op" value = "-">  -
+<input type ="radio" name = "op" value = "*">  * 
+<input type ="radio" name = "op" value = "/">  / 
+</p>
+<input type="button" value = "계산하기" onclick="calcul(this.form)"> 
+<!-- /*button은 requried 가 먹히지 않음.*/ -->
+</fieldset>
+</form>
+</body>
+</html>

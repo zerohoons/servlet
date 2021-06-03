@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function get_date(f) {
+	f.submit();
+}
+function get_date2(f){
+	f.submit();
+}
+</script>
+</head>
+<body>
+<!-- 여러 요구사항이 하나의 서블릿을 이동할 때는, 공통의 파라미터 값을 주고, 파라미터값을 통해 서블릿이 구분하도록 만든다. -->
+	<form action="/01_servlet/Ex15" method="post">
+		<input type = "button" value = "오늘 날짜 구하기" onclick="get_date(this.form)">
+		<input type = "hidden" name="cmd" value ="1">
+	</form>
+	<hr>
+
+	<form action="/01_servlet/Ex15" method="post">
+		<input type = "submit" value = "오늘의 운세 구하기">
+		<input type = "hidden" name="cmd" value ="2">
+	</form>
+	<hr>
+	
+	<form action="/01_servlet/Ex15" method="post">
+		<input type = "button" value = "오늘의 날짜와 운세 구하기" onclick="get_date2(this.form)">
+		<input type = "hidden" name="cmd" value ="3">
+	</form>
+	<hr>
+	
+	
+</body>
+</html>

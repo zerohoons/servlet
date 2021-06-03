@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function get_date(f) {
+	f.submit();
+}
+function get_date2(f){
+	f.submit();
+}
+</script>
+</head>
+<body>
+	<form action="/01_servlet/Ex14_1" method="post">
+		<input type = "button" value = "오늘 날짜 구하기" onclick="get_date(this.form)">
+	</form>
+	<hr>
+
+	<form action="/01_servlet/Ex14_2" method="post">
+		<input type = "submit" value = "오늘의 운세 구하기">
+	</form>
+	<hr>
+	
+	<form action="/01_servlet/Ex14_3" method="post">
+		<input type = "button" value = "오늘의 날짜와 운세 구하기" onclick="get_date2(this.form)">
+	</form>
+	<hr>
+	
+	
+</body>
+</html>
