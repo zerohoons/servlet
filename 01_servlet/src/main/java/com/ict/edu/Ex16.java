@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ict.model.Command;
 import com.ict.model.Command01;
+import com.ict.model.Command02;
+import com.ict.model.Command03;
 
-/**
- * Servlet implementation class Ex14_1
- */
 @WebServlet("/Ex16")
 public class Ex16 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,29 +25,28 @@ public class Ex16 extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-
 		//자바 클래스를 별도로 만들어 실행한다.
 		String cmd = request.getParameter("cmd");
+		
+		
+		//Command01,Command02,Command03이 모두 같은 형태의 메소드를 사용하고 있기 때문에,
+		//Command라는 이름의 interface를 만들어 사용하는 것도 가능하다.
+		Command comm = null;
 		switch(cmd) {
-		case "1	" :
+		case "1" :
 			// 오늘의 날짜와 운세
-			Command01 cmd1 = new Command01();
-			String msg1 = cmd1.exec(request, response);
-			out.println(msg1);
-			System.out.println(msg1);
+			comm = new Command01();
 			break;
 		case "2" :
-			Command01 cmd2 = new Command01();
-			String msg2 = cmd2.exec(request, response);
+			comm = new Command02();
 			// 계산기 실행
 			break;
 		case "3" :
-			Command01 cmd3 = new Command01();
-			String msg3 = cmd3.exec(request, response);
+			comm = new Command03();
 			// 성적처리 실행
 			break;
 		}
-	
-
-}
+		String msg = comm.exec(request, response);
+		out.println(msg);
+	}
 }

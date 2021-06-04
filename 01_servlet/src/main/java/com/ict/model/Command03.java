@@ -5,12 +5,10 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Command03 {
+public class Command03 implements Command{
 	//성적조회 메소드
+	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html; charset=utf-8");
-		PrintWriter out = response.getWriter();
 		String msg = "";
 		//성적을 구하기
 		String name = request.getParameter("name");
@@ -31,10 +29,7 @@ public class Command03 {
 		level = "C";
 		}else {level = "F";}
 		
-		out.println("<h3>");
-		out.println("<p>"+name+"의 총점은 "+sum+" 점, 평균은 "+ avg+"점 입니다.</p>");
-		out.println("<p>"+name+"의 학점은 "+level+" 입니다.</p>");
-		out.println("</h3>");
+		msg = name+"의 총점은 "+sum+" 점, 평균은 "+ avg+"점 입니다.\n"+name+"의 학점은 "+level+" 입니다.";
 		
 		return msg;
 	}
